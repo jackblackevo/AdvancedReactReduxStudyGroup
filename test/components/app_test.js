@@ -8,7 +8,7 @@ describe('App' , () => {
     component = renderComponent(App);
   });
 
-  it('renders something', () => {
-    expect(component).to.exist;
+  it('shows the correct text', () => {
+    expect(component).to.contain("React simple starter");
   });
 });
