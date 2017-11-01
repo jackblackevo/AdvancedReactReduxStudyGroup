@@ -24,10 +24,11 @@ describe('CommentBox Tests', ()=>{
         //these specs are closely realated 
         describe('entering some text',()=>{
             beforeEach( ()=>{
-                component.find('textarea').simulate('change','new comment');    
+                component.find('textarea').simulate('change','new comment'); //simluare change event to the value (new comment)   
+                
             });
             it('shows that text in the textarea',()=>{
-    
+                expect(component.find('textarea')).to.have.value('new comment');           
             });
             
             it('when submitted ,clears the input',()=>{
