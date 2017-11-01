@@ -21,4 +21,19 @@ describe('CommentBox Tests', ()=>{
         expect(component.find('button')).to.exist;
     });
 
+        //these specs are closely realated 
+        describe('entering some text',()=>{
+            beforeEach( ()=>{
+                component.find('textarea').simulate('change','new comment');    
+            });
+            it('shows that text in the textarea',()=>{
+    
+            });
+            
+            it('when submitted ,clears the input',()=>{
+    
+            });
+        });
+
+
 });
