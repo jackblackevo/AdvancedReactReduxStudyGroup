@@ -10,7 +10,6 @@ describe('CommentList',()=>{
         }
     );
 
-
     it('shows a li for each comment',()=>{
         expect(component.find('li').length).to.equal(2);      
     });
