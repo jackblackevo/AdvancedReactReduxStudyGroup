@@ -8,7 +8,16 @@ export default class CommentBox extends Component {
       comment: ''
     }
 
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+
+    this.setState({
+      comment: ''
+    })
   }
 
   handleChange(event) {
@@ -19,10 +28,10 @@ export default class CommentBox extends Component {
 
   render() {
     return (
-      <div className="comment-box">
+      <form className="comment-box" onSubmit={this.handleSubmit}>
         <textarea value={this.state.comment} onChange={this.handleChange} />
         <button>Submit comment</button>
-      </div>
+      </form>
     )
   }
 }
