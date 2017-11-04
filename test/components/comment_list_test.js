@@ -1,0 +1,28 @@
+import {renderComponent,expect} from '../test_helper';
+import CommentList from '../../src/components/comment_list';
+
+describe('test commentList',()=>{
+
+  let component;
+
+  beforeEach(()=>{
+
+    const props = {comments:['New Comment', 'Other New Comment']};
+
+    component = renderComponent(CommentList,null,props);
+  });
+
+  it('show li for each comment',()=>{
+
+     expect(component.find('li').length).to.equal(2);
+  });
+
+  it('shows each comment that is provided',()=>{
+
+     expect(component).to.contain('New Comment');
+     expect(component).to.contain('Other New Comment');
+
+  });
+
+});
+
