@@ -31,6 +31,18 @@ function renderComponent(ComponentClass, props={}, state={}) {
 
 // build helper for simulate events
 
+//  $.fn  這行表示在所有 jQuery生出來的jQuery element之下 加上一個simulate方法  btw $.extend(...)  是把 function直接加在$底下(像$.ajax那樣) 不是加在每一個 jQuery element下
+$.fn.simulate  = function(eventName, value){
+
+  if(value){
+    this.val(value);
+   }
+
+  TestUtils.Simulate[eventName](this[0]);
+
+
+}
+
 // set up chai-jquery
 
 export { renderComponent, expect };
