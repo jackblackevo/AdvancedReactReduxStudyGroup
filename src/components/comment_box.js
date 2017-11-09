@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {saveComment} from '../actions';
-import * as actions from '../actions/index';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { saveComment } from "../actions";
+import * as actions from "../actions/index";
 
 class CommentBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: ''
+      comment: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,14 +20,14 @@ class CommentBox extends Component {
       comment: e.target.value
     });
 
-    console.log('current comment :', this.state.comment);
+    console.log("current comment :", this.state.comment);
   }
 
   handleFormSubmit(e) {
     e.preventDefault();
 
     this.setState({
-      comment:''
+      comment: ""
     });
 
     this.props.saveComment(this.state.comment);
@@ -35,16 +35,18 @@ class CommentBox extends Component {
 
   render() {
     return (
-      <form className="comment-box" onSubmit={this.handleFormSubmit}>
-        <textarea onChange={this.handleChange} value={this.state.comment} />
-        <button action="submit">submit the comment</button>
-      </form>
+      <div>
+        <h4>add a comment</h4>
+        <form className="comment-box" onSubmit={this.handleFormSubmit}>
+          <textarea onChange={this.handleChange} value={this.state.comment} />
+          <div>
+            <button action="submit">submit the comment</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
-
-
-
 
 // function mapDispatchToProps(dispatch){
 
@@ -54,4 +56,4 @@ class CommentBox extends Component {
 
 // export default connect(null,mapDispatchToProps)(CommentBox);
 
-export default connect(null,actions)(CommentBox);
+export default connect(null, actions)(CommentBox);
