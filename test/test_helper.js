@@ -1,8 +1,12 @@
 import jsdom from 'jsdom';
+import jquery from 'jquery';
 
 //set up testing environment to run like a browser in command line
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.window = global.document.defaultView;
+
+const $ = jquery(global.window);  //construct a jquery instance in nodeJs CLI environment by a mocked browser window  with document in it by jsdom
+
 
 
 // build `renderComponent` helper that should render a given react class
