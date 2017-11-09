@@ -16,10 +16,12 @@ const $ = jquery(global.window); //construct a jquery instance in nodeJs CLI env
 
 // build `renderComponent` helper that should render a given react class
 
-function renderComponent(ComponentClass) {
+
+// 第二個參數props 是指 該component是直接接受其父component傳給它的值 作為props時的情形， 第三個參數state是指application level state , 也就是存在redux的store裡的state , 這些state在component是container的情況下，會從mapStateToProps 裡從store取得資料然後被作為props被傳入
+function renderComponent(ComponentClass, props={}, state={}) {
   const componentInstance = TestUtils.renderIntoDocument(
-    <Provider store={createStore(reducers)}>
-      <ComponentClass />
+    <Provider store={createStore(reducers, state)}>
+      <ComponentClass  {...props}/>
     </Provider>
   ); // doc: https://reactjs.org/docs/test-utils.html#renderintodocument
 
