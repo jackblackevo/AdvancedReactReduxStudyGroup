@@ -26,7 +26,7 @@ describe('comment_box Test', () => {
     });
 
     it('when submitted ,clear the input', () => {
-      component.simulate('submit');
+      component.find('form').simulate('submit');   // 呼應 comment_box.js那裡HTML結構改變，這裡就也要跟著改變
       expect(component.find('textarea')).to.have.value('');
     });
   });
