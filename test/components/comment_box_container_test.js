@@ -1,15 +1,15 @@
 import { renderComponent, expect } from '../test_helper'
-import CommentBox from '../../src/components/comment_box'
+import CommentBoxContainer from '../../src/components/comment_box_container'
 
 describe('Comment Box', () => {
   let component
 
   beforeEach(() => {
-    component = renderComponent(CommentBox)
+    component = renderComponent(CommentBoxContainer)
   })
 
   it('has the correct class', () => {
-    expect(component).to.have.class('comment-box')
+    expect(component.find('form')).to.have.class('comment-box')
   })
 
   it('has a text area', () => {
@@ -30,7 +30,7 @@ describe('Comment Box', () => {
     })
 
     it('when submitted, clears the input', () => {
-      component.simulate('submit')
+      component.find('form').simulate('submit')
       expect(component.find('textarea')).to.have.value('')
     })
   })
