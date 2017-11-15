@@ -1,12 +1,12 @@
 import { renderComponent, expect } from '../test_helper'
-import CommentListBlock from '../../src/components/comment_list_block'
+import CommentListContainer from '../../src/components/comment_list_container'
 
-describe('CommentList', () => {
+describe('CommentListContainer', () => {
   let component
 
   beforeEach(() => {
     const props = { comments: ['New Comment', 'Other New Comment'] }
-    component = renderComponent(CommentListBlock, null, props)
+    component = renderComponent(CommentListContainer, null, props)
   })
 
   it('shows an li for each comment', () => {
