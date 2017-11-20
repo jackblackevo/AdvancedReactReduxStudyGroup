@@ -4,6 +4,7 @@ export default class CommentBox extends Component {
     constructor(props){
         super(props);
         this.state = {comment: ''};
+        this.handleChange = this.handleChange.bind(this);
 }
 
 handleChange(event){
@@ -19,7 +20,7 @@ handleSubmit(event){
     render(){
         return(
             <form onSubmit={this.handleSubmit.bind(this)} className="comment-box">
-                <textarea value={this.state.comment} onChange={this.handleChange.bind(this)}/>
+                <textarea value={this.state.comment} onChange={this.handleChange}/>
                 <button action="submit">Submit Comment</button>
             </form>
         );
