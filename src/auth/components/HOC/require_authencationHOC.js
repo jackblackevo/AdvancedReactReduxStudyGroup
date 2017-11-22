@@ -6,12 +6,17 @@ export default function(ComposedComponent){
     class Authencation extends Component{
 
 
+    static contextTypes ={
+      router:React.PropTypes.object
+    }
+
      componentWillMount(){
 
-      console.log(this.props);
+      console.log('props', this.props);
+      console.log('context', this.context);
         if(!this.props.isLoggedIn){
 
-           this.props.history.push('/');
+          this.context.router.push('/');
 
         }
 
@@ -23,7 +28,7 @@ export default function(ComposedComponent){
 
               if(!nexrProps.isLoggedIn){
 
-                 this.props.history.push('/');
+                this.context.router.push('/');
 
               }
 

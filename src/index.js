@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-//import {Router, Route, browserHistory} from 'react-router';
+//import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, browserHistory} from 'react-router';
 
 import App from './auth/components/app';
 import reducers from './reducers';
@@ -22,16 +22,13 @@ ReactDOM.render(                             // 這裡只能放一個 rootReduce
   <Provider store={createStoreWithMiddleware(authReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
 
 
-     <BrowserRouter>
-     <div>
-     <Route path="/" component={App} />
+  <Router history={browserHistory}>
 
-        <Switch>
-           <Route path="/resource" component={Require_AuthencationHOC(Resource)} />
-        </Switch>
+         <Route path="/" component={App} >
+            <Route path="resource" component={Require_AuthencationHOC(Resource)} />
+         </Route>
 
-     </div>
-  </BrowserRouter>
+  </Router>
 
 
   </Provider>
@@ -40,15 +37,16 @@ ReactDOM.render(                             // 這裡只能放一個 rootReduce
 
 
 
+//   <BrowserRouter>
+//   <div>
+//   <Route path="/" component={App} />
 
+//      <Switch>
+//         <Route path="/resource" component={Require_AuthencationHOC(Resource)} />
+//      </Switch>
 
-  // <Router history={browserHistory}>
-
-  //        <Route path="/" component={App} >
-  //           <Route path="resource" component={Require_AuthencationHOC(Resource)} />
-  //        </Route>
-
-  //      </Router>
+//   </div>
+// </BrowserRouter>
 
 
 //  v4的話 Header.js裡  import Link時要改成  import {Link} from 'react-router-dom';
