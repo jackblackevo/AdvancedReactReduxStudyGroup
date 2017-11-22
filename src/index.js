@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-//import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {Router, Route, browserHistory} from 'react-router';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+//import {Router, Route, browserHistory} from 'react-router';
 
 import App from './auth/components/app';
 import reducers from './reducers';
@@ -21,13 +21,18 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 ReactDOM.render(                             // 這裡只能放一個 rootReducer ?
   <Provider store={createStoreWithMiddleware(authReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
 
-     <Router history={browserHistory}>
 
-       <Route path="/" component={App} >
-          <Route path="resource" component={Require_AuthencationHOC(Resource)} />
-       </Route>
+     <BrowserRouter>
+     <div>
+     <Route path="/" component={App} />
 
-     </Router>
+        <Switch>
+           <Route path="/resource" component={Require_AuthencationHOC(Resource)} />
+        </Switch>
+
+     </div>
+  </BrowserRouter>
+
 
   </Provider>
   , document.querySelector('.container'));
@@ -37,16 +42,13 @@ ReactDOM.render(                             // 這裡只能放一個 rootReduce
 
 
 
+  // <Router history={browserHistory}>
+
+  //        <Route path="/" component={App} >
+  //           <Route path="resource" component={Require_AuthencationHOC(Resource)} />
+  //        </Route>
+
+  //      </Router>
 
 
-  //    <BrowserRouter>
-  //    <div>
-  //    <Route path="/" component={App} />
-
-  //       <Switch>
-  //          <Route path="/resource" component={Resource} />
-  //       </Switch>
-
-  //    </div>
-  // </BrowserRouter>
-//  Header.js裡  import Link時要改成  import {Link} from 'react-router-dom';
+//  v4的話 Header.js裡  import Link時要改成  import {Link} from 'react-router-dom';

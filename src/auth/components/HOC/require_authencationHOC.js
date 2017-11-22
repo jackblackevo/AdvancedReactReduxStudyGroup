@@ -6,7 +6,31 @@ export default function(ComposedComponent){
     class Authencation extends Component{
 
 
+     componentWillMount(){
+
+      console.log(this.props);
+        if(!this.props.isLoggedIn){
+
+           this.props.history.push('/');
+
+        }
+
+     }
+
+
+     componentWillReceiveProps(nexrProps){
+
+
+              if(!nexrProps.isLoggedIn){
+
+                 this.props.history.push('/');
+
+              }
+
+           }
+
       render(){
+
 
           return <ComposedComponent {...this.props} />;
 
