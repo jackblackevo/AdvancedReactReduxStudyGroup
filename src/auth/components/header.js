@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {Link} from "react-router";
+import {authenticate} from "../actions";
 
 class Header extends Component {
   constructor(props) {
@@ -7,12 +10,26 @@ class Header extends Component {
 
 
     this.authButton = this.authButton.bind(this);
+    this.changeAuth = this.changeAuth.bind(this);
 
   }
 
-  authButton(){
 
-return <button> sign in </button>;
+ changeAuth(){
+
+  const isLoggedIn = this.props.isLoggedIn ? false : true;
+
+  this.props.authenticate(isLoggedIn);
+ }
+
+  authButton(){
+    if(this.props.isLoggedIn){
+
+     return <button onClick={this.changeAuth}> sign out </button>;
+
+  }
+
+      return <button onClick={this.changeAuth}> sign in </button>;
 
   }
 
@@ -47,4 +64,17 @@ return <button> sign in </button>;
 }
 
 
-export default  Header;
+function mapStateToProps(state){
+
+    return  {isLoggedIn: state.isSignIn}
+
+}
+
+
+function mapDispatchToProps(dispatch){
+
+   return bindActionCreators({authenticate:authenticate},dispatch);
+
+}
+
+export default  connect(mapStateToProps,mapDispatchToProps)(Header);
