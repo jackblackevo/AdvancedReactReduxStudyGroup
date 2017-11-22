@@ -8,14 +8,17 @@ import {Router, Route, browserHistory} from 'react-router';
 
 import App from './auth/components/app';
 import reducers from './reducers';
+import authReducers from './auth/reducers';
 import Header from './auth/components/header';
 import Resource from './auth/components/resource';
 
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+//  reducers,
+
+ReactDOM.render(                             // 這裡只能放一個 rootReducer ?
+  <Provider store={createStoreWithMiddleware(authReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
 
      <Router history={browserHistory}>
 
