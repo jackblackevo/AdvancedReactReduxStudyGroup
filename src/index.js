@@ -11,6 +11,7 @@ import reducers from './reducers';
 import authReducers from './auth/reducers';
 import Header from './auth/components/header';
 import Resource from './auth/components/resource';
+import Require_AuthencationHOC from './auth/components/HOC/require_authencationHOC';
 
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
@@ -23,7 +24,7 @@ ReactDOM.render(                             // 這裡只能放一個 rootReduce
      <Router history={browserHistory}>
 
        <Route path="/" component={App} >
-          <Route path="resource" component={Resource} />
+          <Route path="resource" component={Require_AuthencationHOC(Resource)} />
        </Route>
 
      </Router>
