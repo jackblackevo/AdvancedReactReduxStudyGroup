@@ -4,15 +4,15 @@ export default class CommentBox extends Component {
     constructor(props){
         super(props);
         this.state = {comment: ''};
-        this.handleChange = this.handleChange.bind(this);
+       // this.handleChange = this.handleChange.bind(this);
 }
 
-handleChange(event){
+handleChange = (event)=>{
    //if marked -> test fail
     this.setState({comment:event.target.value}); 
 }
 
-handleSubmit(event){
+handleSubmit(event)  {
     event.preventDefault(); 
     this.setState({comment: ''});
 }
