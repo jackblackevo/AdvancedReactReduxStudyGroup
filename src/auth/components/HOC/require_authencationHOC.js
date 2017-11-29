@@ -5,6 +5,9 @@ export default function(ComposedComponent){
 
     class Authencation extends Component{
 
+      static contextTypes ={
+        router:React.PropTypes.object
+      }
 
 
       render(){
