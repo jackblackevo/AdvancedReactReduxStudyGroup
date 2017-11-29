@@ -3,13 +3,39 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
+//import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, browserHistory} from 'react-router';
+
+//import App from './components/app';
+import App from './auth/components/app';
 import reducers from './reducers';
+import authReducers from './auth/reducers';
+import Header from './auth/components/header';
+import Resource from './auth/components/resource';
+import Require_AuthencationHOC from './auth/components/HOC/require_authencationHOC';
+
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+  <Provider store={createStoreWithMiddleware(authReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
+    <Router history={browserHistory}>
+         <Route path="/" component={App} >
+            <Route path="resource" component={Require_AuthencationHOC(Resource)} />
+         </Route>
+    </Router>
   </Provider>
   , document.querySelector('.container'));
+
+
+  
+  //   <BrowserRouter>
+  //   <div>
+  //   <Route path="/" component={App} />
+  //      <Switch>
+  //         <Route path="/resource" component={Require_AuthencationHOC(Resource)} />
+  //      </Switch>
+  //   </div>
+  // </BrowserRouter>
+  //  v4的話 Header.js裡  import Link時要改成  import {Link} from 'react-router-dom';
+  
