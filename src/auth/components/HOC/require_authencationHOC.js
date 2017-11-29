@@ -9,6 +9,23 @@ export default function(ComposedComponent){
         router:React.PropTypes.object
       }
 
+      componentWillMount(){
+        
+              console.log('props', this.props);
+              console.log('context', this.context);
+                if(!this.props.isLoggedIn){
+                  this.context.router.push('/');
+                }
+             }
+        
+             //componentWillUpdate(nextProps){
+             componentWillReceiveProps(nexrProps){
+                      if(!nexrProps.isLoggedIn){
+                        this.context.router.push('/');
+                      }
+                   }
+        
+
 
       render(){
           //console.log(this.props.isLoggedIn);
