@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+//import Require_AuthencationHOC from './auth/components/HOC/require_authencationHOC';
 
+
+//const Resource = ()=>{
 export default () => {
 
         return (
@@ -17,3 +20,5 @@ export default () => {
 
 
 }
+
+//export default  Require_AuthencationHOC(Resource);
